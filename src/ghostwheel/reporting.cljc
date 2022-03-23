@@ -176,8 +176,9 @@
           (log "\nCall:")
           (log (cons (with-meta fn-name nil) args)))
         (log)
-        (when (= (::s/failure data) :instrument)
-          (log (-> msg string/split-lines first (str "\n"))))
+        ;; Carlo: I disabled these lines to avoid conflict between outstrument and check
+        ;; (when (= (::s/failure data) :instrument)
+        ;;   (log (-> msg string/split-lines first (str "\n"))))
         (-> (with-out-str ((expound/custom-printer nil) data))
             (str "\n")
             log)
